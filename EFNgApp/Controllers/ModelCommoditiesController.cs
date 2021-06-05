@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using EFNgApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using EFNgApp.Models;
 
 namespace EFNgApp.Controllers
 {
@@ -28,16 +27,18 @@ namespace EFNgApp.Controllers
         }
 
 
+        // GET: api/ModelCommodities/GetDataByModelCommodity
         [HttpGet]
         public ActionResult<List<ModelCommoditiesResult>> GetDataByModelCommodity()
         {
             var modelType = _context.ModelCommodity.Select(x => x.Type).Distinct().ToList();
-            List<ModelCommoditiesResult> result = new List<ModelCommoditiesResult>();
-            foreach (string model in modelType)
+            var result = new List<ModelCommoditiesResult>();
+            foreach (var model in modelType)
             {
-                ModelCommoditiesResult mr = new ModelCommoditiesResult();
-                mr.Type = model;
-                mr.Records = _context.ModelCommodity.Where(x => x.Type == model).ToList();
+                var mr = new ModelCommoditiesResult
+                {
+                    Type = model, Records = _context.ModelCommodity.Where(x => x.Type == model).ToList()
+                };
                 result.Add(mr);
             };
 
@@ -45,6 +46,7 @@ namespace EFNgApp.Controllers
         }
 
         
+        // GET: api/ModelCommodities/GetPnLByModelCommodity
        [HttpGet]
          public async Task<ActionResult<IEnumerable<object>>> GetPnLByModelCommodity()
         {
@@ -57,6 +59,7 @@ namespace EFNgApp.Controllers
         }
 
 
+         // GET: api/ModelCommodities/GetPnLByModelCommodityAndContract
         [HttpGet]
         public async Task<ActionResult<IEnumerable<object>>> GetPnLByModelCommodityAndContract()
         {
@@ -68,10 +71,11 @@ namespace EFNgApp.Controllers
 
         }
 
+        // GET: api/ModelCommodities/GetPnLByMonth
         [HttpGet]
         public async Task<ActionResult<IEnumerable<object>>> GetPnLByMonth()
         {
-            int year = DateTime.Now.Year;
+            var year = DateTime.Now.Year;
             return await _context.ModelCommodity.GroupBy(x => new { x.Type, x.Date.Value.Year,x.Date.Value.Month }).Select(x => new
             {
                 Data = x.Key,
@@ -80,10 +84,11 @@ namespace EFNgApp.Controllers
 
         }
 
+        // GET: api/ModelCommodities/GetPnLByYear
         [HttpGet]
         public async Task<ActionResult<IEnumerable<object>>> GetPnLByYear()
         {
-            int year = DateTime.Now.Year;
+            var year = DateTime.Now.Year;
             return await _context.ModelCommodity.GroupBy(x => new { x.Type, x.Date.Value.Year }).Select(x => new
             {
                 Data = x.Key,

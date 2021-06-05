@@ -65,7 +65,7 @@ namespace EFNgApp.DataAccess
         {
             try
             {
-                TblEmployee employee = db.TblEmployee.Find(id);
+                var employee = db.TblEmployee.Find(id);
                 return employee;
             }
             catch
@@ -79,7 +79,7 @@ namespace EFNgApp.DataAccess
         {
             try
             {
-                TblEmployee emp = db.TblEmployee.Find(id);
+                var emp = db.TblEmployee.Find(id);
                 db.TblEmployee.Remove(emp);
                 db.SaveChanges();
                 return 1;
@@ -93,7 +93,7 @@ namespace EFNgApp.DataAccess
         //To Get the list of Cities
         public List<TblCities> GetCities()
         {
-            List<TblCities> lstCity = new List<TblCities>();
+            var lstCity = new List<TblCities>();
             lstCity = (from CityList in db.TblCities select CityList).ToList();
 
             return lstCity;
