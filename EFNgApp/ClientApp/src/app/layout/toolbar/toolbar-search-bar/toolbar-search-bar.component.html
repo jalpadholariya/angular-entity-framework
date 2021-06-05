@@ -1,0 +1,27 @@
+<div class="search-wrapper" fxLayout="row" [ngClass]="{ 'focus': focused, 'has-input': input }" fxFlex
+     (furyClickOutside)="closeDropdown()">
+  <mat-icon class="search-icon">search</mat-icon>
+  <input type="search"
+         autocomplete="off"
+         spellcheck="false"
+         class="search-input"
+         [(ngModel)]="input"
+         (focus)="openDropdown()"
+         placeholder="Search...">
+
+  <div class="search-dropdown">
+    <div class="content results" fxLayout="column">
+      <div class="heading" fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="icon">search</mat-icon>
+        Popular Stocks
+      </div>
+      <div class="items">
+        <div class="item" matRipple [routerLink]="['/model/AAPL']">AAPL</div>
+        <div class="item" matRipple [routerLink]="['/model/GOOGL']">GOOGL</div>
+        <div class="item" matRipple [routerLink]="['/model/C']">C</div>
+        <div class="item" matRipple [routerLink]="['/model/TSLA']">TSLA</div>
+        <div class="item" matRipple [routerLink]="['/model/SHOP']">SHOP</div>
+      </div>
+    </div>
+  </div>
+</div>
