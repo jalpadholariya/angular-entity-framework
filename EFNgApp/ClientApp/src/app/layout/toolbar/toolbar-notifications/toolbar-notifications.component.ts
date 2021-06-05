@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { LIST_FADE_ANIMATION } from '../../../../@fury/shared/list.animation';
 import { Observable, ReplaySubject } from 'rxjs';
-import { QuoteModel } from '../../../pages/grid/model/quote.model';
 import { ApiService } from '../../../services/api.service';
 import { filter } from 'rxjs/operators';
 import * as moment from 'moment';
@@ -15,9 +14,9 @@ import * as moment from 'moment';
 })
 export class ToolbarNotificationsComponent implements OnInit {
 
-    subject$: ReplaySubject<QuoteModel[]> = new ReplaySubject<QuoteModel[]>(1);
-    data$: Observable<QuoteModel[]> = this.subject$.asObservable();
-    quotes: QuoteModel[];
+    subject$: ReplaySubject<any[]> = new ReplaySubject<any[]>(1);
+    data$: Observable<any[]> = this.subject$.asObservable();
+    quotes: any[];
 
     notifications: any[] = [];
     isOpen: boolean;

@@ -22,7 +22,7 @@ const routes: Routes = [
             },
             {
                 path: 'grid',
-                loadChildren: () => import('./pages/grid/grid.module').then(m => m.GridModule),
+                loadChildren: () => import('./pages/historical/historical.module').then(m => m.HistoricalModule),
             }
         ]
     }

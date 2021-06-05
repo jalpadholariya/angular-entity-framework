@@ -1,0 +1,106 @@
+<fury-card>
+    <fury-card-header>
+        <fury-card-header-heading>
+            Key Metrics
+        </fury-card-header-heading>
+        <fury-card-header-subheading>
+            Of {{modelCommodity.value?.replace('_', ' ')}}
+        </fury-card-header-subheading>
+
+        <fury-card-header-actions>
+            <button mat-icon-button (click)="reload()">
+                <mat-icon>refresh</mat-icon>
+            </button>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+        </fury-card-header-actions>
+    </fury-card-header>
+
+    <fury-card-content class="card-content">
+        <div class="sections" fxLayout="row" fxLayoutAlign="start center">
+            <div class="section" fxFlex="grow">
+                <div class="label">Current PnL</div>
+                <div class="value" fxLayout="row" fxLayoutAlign="start center">
+                    <span>{{selectedMetrics?.currentPnL | number}}</span>
+                    <mat-icon class="indicator success">trending_up</mat-icon>
+                </div>
+            </div>
+            <div class="section" fxFlex="grow">
+                <div class="label">Current Position</div>
+                <div class="value" fxLayout="row" fxLayoutAlign="start center">
+                    <span>{{selectedMetrics?.currentPosition | number}}</span>
+                    <mat-icon class="indicator warn">trending_down</mat-icon>
+                </div>
+            </div>
+            <div class="section" fxFlex="grow">
+                <div class="label">Current Price</div>
+                <div class="value" fxLayout="row" fxLayoutAlign="start center">
+                    <span>{{selectedMetrics?.currentPrice | number}}</span>
+                    <mat-icon class="indicator warn">trending_down</mat-icon>
+                </div>
+            </div>
+        </div>
+        <div class="sections" fxLayout="row" fxLayoutAlign="start center">
+            <div class="section" fxFlex="grow">
+                <div class="label">Pnl LTD</div>
+                <div class="value" fxLayout="row" fxLayoutAlign="start center">
+                    <span>{{selectedMetrics?.pnlLtd | number}}</span>
+                    <mat-icon class="indicator success">trending_up</mat-icon>
+                </div>
+            </div>
+            <div class="section" fxFlex="grow">
+                <div class="label">PnL YTD</div>
+                <div class="value" fxLayout="row" fxLayoutAlign="start center">
+                    <span>{{selectedMetrics?.pnlYtd | number}}</span>
+                    <mat-icon class="indicator warn">trending_down</mat-icon>
+                </div>
+            </div>
+            <div class="section" fxFlex="grow">
+                <div class="label">Drawdown YTD</div>
+                <div class="value" fxLayout="row" fxLayoutAlign="start center">
+                    <span>{{selectedMetrics?.drawdownYTD | number}}</span>
+<!--                    <mat-icon class="indicator warn">trending_down</mat-icon>-->
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="content">
+            <canvas *ngIf="data"
+                    [datasets]="data.datasets"
+                    [labels]="data.labels"
+                    [legend]="false"
+                    [options]="chartOptions"
+                    baseChart
+                    chartType="line">
+            </canvas>
+        </div>-->
+    </fury-card-content>
+    <fury-card-actions class="actions" fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field appearance="standard" class="select">
+            <mat-select [formControl]="modelCommodity">
+                <mat-option value="{{op.type}}" *ngFor="let op of dashboardMetrics">{{op.type?.replace('_', ' ')}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button color="primary" mat-button type="button">
+            VIEW MORE
+        </button>
+    </fury-card-actions>
+    <fury-loading-overlay [isLoading]="isLoading"></fury-loading-overlay>
+</fury-card>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>
+        <mat-icon> settings</mat-icon>
+        <span> Settings </span>
+    </button>
+    <button mat-menu-item disabled>
+        <mat-icon> more</mat-icon>
+        <span> More Info </span>
+    </button>
+    <button mat-menu-item>
+        <mat-icon> remove_circle</mat-icon>
+        <span> Remove Widget </span>
+    </button>
+</mat-menu>
