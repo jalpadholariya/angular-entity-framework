@@ -14,10 +14,11 @@ import {ChartsModule} from "ng2-charts";
 import {PieChartModule} from "../../shared/pie-chart/pie-chart.module";
 import {TimeChartModule} from "../../shared/time-chart/time-chart.module";
 import {GridModule} from "../../shared/grid/grid.module";
+import { HistoricalChartComponent } from './historical-chart/historical-chart.component';
 
 
 @NgModule({
-    declarations: [DashboardComponent, KeyMetricsComponent],
+    declarations: [DashboardComponent, KeyMetricsComponent, HistoricalChartComponent],
     imports: [
         CommonModule,
         DashboardRoutingModule,

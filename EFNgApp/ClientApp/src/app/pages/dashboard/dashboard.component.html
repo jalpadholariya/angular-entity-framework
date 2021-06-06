@@ -9,19 +9,16 @@
         </div>
     </div>
     <!-- FIRST ROW END -->
-    
+
     <!-- SECOND ROW -->
     <div fxFlex="noshrink" fxLayout="column" [fxLayoutGap]="gap" fxLayout.gt-lg="row">
         <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)" fxLayout.gt-sm="row">
 
             <div fxFlex="auto" [fxFlex.gt-sm]="col(1.5)">
-                <fury-time-chart [data]="this.pieCommodity$ | async"
-                                [options]="{title: 'Commodity Share', subTitle: 'Percentage share by model/commodity'}"
-                                (refresh)="initPieCommodity()"
-                                title=""></fury-time-chart>
+                <fury-historical-chart></fury-historical-chart>
             </div>
             <div fxFlex="auto" [fxFlex.gt-sm]="col(3)">
-                <fury-pie-chart [data]="this.pieCommodity$ | async"
+                <fury-pie-chart [data]="this.pieCommodityData$ | async"
                                 [options]="{title: 'Commodity Share', subTitle: 'Percentage share by model/commodity'}"
                                 (refresh)="initPieCommodity()"
                                 title=""></fury-pie-chart>

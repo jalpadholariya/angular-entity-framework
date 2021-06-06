@@ -45,7 +45,7 @@ namespace EFNgApp.Controllers
                         PnLDaily = record.PnLdaily,
                         Contract = record.Contract,
                         CumPnL = cumPnL,
-                        DrowdownPnL = maxPnL - cumPnL
+                        drawdownPnL = maxPnL - cumPnL
                     });
                 }
             }

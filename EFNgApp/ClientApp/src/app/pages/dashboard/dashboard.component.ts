@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
     private _gap = 16;
     gap = `${this._gap}px`;
 
-    pieCommodity$: Observable<Record<any, any>[]>;
+    pieCommodityData$: Observable<Record<any, any>[]>;
 
     constructor(private api: ApiService) {
     }
@@ -24,11 +24,11 @@ export class DashboardComponent implements OnInit {
         this.initPieCommodity();
     }
 
-    col(colAmount: number) {
-        return `1 1 calc(${100 / colAmount}% - ${this._gap - (this._gap / colAmount)}px)`;
+    initPieCommodity() {
+        this.pieCommodityData$ = this.api.getPnLByModelCommodity();
     }
 
-    initPieCommodity() {
-        this.pieCommodity$ = this.api.getPnLByModelCommodity();
+    col(colAmount: number) {
+        return `1 1 calc(${100 / colAmount}% - ${this._gap - (this._gap / colAmount)}px)`;
     }
 }

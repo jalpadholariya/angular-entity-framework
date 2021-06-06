@@ -18,3 +18,20 @@ export interface WidgetOptions {
     title: string,
     subTitle?: string
 }
+
+export interface ModelCommodity {
+    type: string,
+    date: string,
+    position: number,
+    newTradeAction: number,
+    pnLDaily: number,
+    contract: string,
+    price: number,
+    cumPnL: number,
+    drawdownPnL: number,
+}
+
+export interface RecordsByCommodity {
+    type: string,
+    records: ModelCommodity[]
+}

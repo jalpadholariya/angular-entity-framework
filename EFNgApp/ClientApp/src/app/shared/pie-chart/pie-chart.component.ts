@@ -43,7 +43,6 @@ export class PieChartComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.initChart();
     }
 
     initChart() {
