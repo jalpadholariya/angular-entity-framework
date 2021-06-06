@@ -17,11 +17,11 @@ const routes: Routes = [
                 loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
             },
             {
-                path: 'historical',
+                path: 'trend-reports',
                 loadChildren: () => import('./pages/historical/historical.module').then(m => m.HistoricalModule),
             },
             {
-                path: 'grid',
+                path: 'custom-reports',
                 loadChildren: () => import('./pages/historical/historical.module').then(m => m.HistoricalModule),
             }
         ]

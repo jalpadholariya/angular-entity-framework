@@ -1,7 +1,7 @@
 <fury-card>
     <fury-card-header>
-        <fury-card-header-heading>Raw Data</fury-card-header-heading>
-        <fury-card-header-subheading></fury-card-header-subheading>
+        <fury-card-header-heading>Key Action Per Model Commodity</fury-card-header-heading>
+        <fury-card-header-subheading>Raw Data - Grouping, Sorting, Charts, Analytics</fury-card-header-subheading>
 
         <fury-card-header-actions>
             <button mat-icon-button (click)="loadData()">
@@ -15,9 +15,9 @@
 
     <fury-card-content>
         <div class="content" fxLayout="row">
+<!--            domLayout="autoHeight"-->
             <ag-grid-angular
-                    style="width: 100%;"
-                    domLayout="autoHeight"
+                    style="width: 100%; height: 720px;"
                     class="ag-theme-material"
                     [sideBar]="{toolPanels: ['columns', 'filters']}"
                     animateRows="true"

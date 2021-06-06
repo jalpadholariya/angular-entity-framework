@@ -48,15 +48,15 @@ export class AppComponent {
                 pathMatchExact: true
             },
             {
-                name: 'Historical',
-                routeOrFunction: '/historical',
+                name: 'Trend Reports',
+                routeOrFunction: '/trend-reports',
                 icon: 'timeline',
                 position: 2,
                 pathMatchExact: true
             },
             {
-                name: 'Grid',
-                routeOrFunction: '/grid',
+                name: 'Custom Reports',
+                routeOrFunction: '/custom-reports',
                 icon: 'view_list',
                 position: 3,
                 pathMatchExact: true
