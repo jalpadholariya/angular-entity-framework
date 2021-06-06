@@ -1,0 +1,63 @@
+<fury-card>
+    <fury-card-header>
+        <fury-card-header-heading>Historical Trends</fury-card-header-heading>
+        <fury-card-header-subheading>Daily PnL, Cumulative PnL, Drawdown vs Date</fury-card-header-subheading>
+
+        <fury-card-header-actions>
+            <button mat-icon-button (click)="initHistoricalChart()">
+                <mat-icon>refresh</mat-icon>
+            </button>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+        </fury-card-header-actions>
+    </fury-card-header>
+
+    <fury-card-content>
+        <fury-time-chart [data]="this.timeChartData"
+                         [categories]="this.categories"
+                         [yAxis]="this.yAxis"
+                         title=""></fury-time-chart>
+
+    </fury-card-content>
+
+    <fury-card-actions class="actions" fxLayout="row" fxLayoutAlign="space-between center">
+        <div>
+            <mat-form-field appearance="standard" class="select">
+                <mat-select [formControl]="modelCommodity" (selectionChange)="decorateChartData()">
+                    <mat-option value="{{op}}" *ngFor="let op of commodities">{{op.replace('_', ' ')}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            &nbsp;
+            <mat-form-field appearance="standard" class="select">
+                <mat-select [formControl]="lastRecords" (selectionChange)="decorateChartData()">
+                    <mat-option value="10">Last 10 Days</mat-option>
+                    <mat-option value="100">Last 100 Days</mat-option>
+                    <mat-option value="200">Last 200 Days</mat-option>
+                    <mat-option value="-1">All Days</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <button color="primary" mat-button type="button">
+            VIEW MORE
+        </button>
+    </fury-card-actions>
+
+    <fury-loading-overlay [isLoading]="isLoading"></fury-loading-overlay>
+</fury-card>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>
+        <mat-icon> settings</mat-icon>
+        <span> Settings </span>
+    </button>
+    <button mat-menu-item disabled>
+        <mat-icon> more</mat-icon>
+        <span> More Info </span>
+    </button>
+    <button mat-menu-item>
+        <mat-icon> remove_circle</mat-icon>
+        <span> Remove Widget </span>
+    </button>
+</mat-menu>
