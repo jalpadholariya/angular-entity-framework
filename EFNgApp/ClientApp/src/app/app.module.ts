@@ -8,6 +8,7 @@ import {LayoutModule} from './layout/layout.module';
 import {PendingInterceptorModule} from '../@fury/shared/loading-indicator/pending-interceptor.module';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions} from '@angular/material/form-field';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig} from '@angular/material/snack-bar';
+import {ModuleRegistry, AllModules} from '@ag-grid-enterprise/all-modules';
 
 @NgModule({
     imports: [
@@ -24,7 +25,7 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig} from '@angular/materia
 
         // Displays Loading Bar when a Route Request or HTTP Request is pending
         PendingInterceptorModule,
-
+        
         // Register a Service Worker (optional)
         // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
@@ -48,4 +49,7 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig} from '@angular/materia
     ]
 })
 export class AppModule {
+    constructor() {
+        ModuleRegistry.registerModules(AllModules);
+    }
 }

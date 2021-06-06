@@ -15,10 +15,15 @@
 
     <fury-card-content>
         <div class="content" fxLayout="row">
-            <div id="pie-container" style="width:100%;margin: 0 auto" #chartContainer></div>
+            <div id="pie-container" style="width:100%;margin: 0 auto"></div>
         </div>
     </fury-card-content>
-    
+    <fury-card-actions class="actions" fxLayout="row" fxLayoutAlign="space-between center">
+        <div></div>
+        <button color="primary" mat-button type="button">
+            VIEW MORE
+        </button>
+    </fury-card-actions>
     <fury-loading-overlay [isLoading]="isLoading"></fury-loading-overlay>
 </fury-card>
 

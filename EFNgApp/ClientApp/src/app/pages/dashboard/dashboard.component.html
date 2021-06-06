@@ -19,7 +19,7 @@
             </div>
             <div fxFlex="auto" [fxFlex.gt-sm]="col(3)">
                 <fury-pie-chart [data]="this.pieCommodityData$ | async"
-                                [options]="{title: 'Commodity Share', subTitle: 'Percentage share by model/commodity'}"
+                                [options]="{title: 'Commodity Share', subTitle: 'PnL LTD by model/commodity'}"
                                 (refresh)="initPieCommodity()"
                                 title=""></fury-pie-chart>
             </div>
@@ -31,7 +31,7 @@
     <div fxFlex="noshrink" fxLayout="column" [fxLayoutGap]="gap" fxLayout.gt-lg="row">
         <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(1)" fxLayout.gt-sm="row">
             <div fxFlex="auto" [fxFlex.gt-sm]="col(1)">
-                <fury-grid></fury-grid>
+                <fury-commodity-grid></fury-commodity-grid>
             </div>
         </div>
     </div>

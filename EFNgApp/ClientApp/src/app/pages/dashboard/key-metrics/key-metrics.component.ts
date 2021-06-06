@@ -32,7 +32,9 @@ export class KeyMetricsComponent implements OnInit {
             this.dashboardMetrics = metrics;
             this.selectedMetrics = metrics[0];
             this.modelCommodity.setValue(metrics[0].type);
-            this.isLoading = false;
+            setTimeout(() => {
+                this.isLoading = false;
+            }, 300);
         })
     }
 

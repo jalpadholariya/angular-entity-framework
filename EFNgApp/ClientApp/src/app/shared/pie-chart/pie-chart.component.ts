@@ -26,17 +26,17 @@ Highcharts.setOptions({
     styleUrls: ['./pie-chart.component.scss']
 })
 export class PieChartComponent implements OnInit {
-    private _data: any;
+    
     @Input() options: WidgetOptions;
+    @Input() title: string;
+    @Output() refresh = new EventEmitter();
+
     @Input()
     set data(value: any) {
         this._data = value;
         this.initChart();
     }
-    @Input() title: string;
-    @Output() refresh = new EventEmitter();
-    // @ViewChild('chartContainer', { read: ElementRef, static: true }) chartContainer: ElementRef;
-
+    private _data: any;
     isLoading: boolean;
 
     constructor() {
@@ -64,7 +64,7 @@ export class PieChartComponent implements OnInit {
                 }
             },
             tooltip: {
-                pointFormat: '{point.y:.1f} (<b>{point.percentage:.1f}%</b>)'
+                pointFormat: 'PnL LTD: {point.y:.1f} (<b>{point.percentage:.1f}%</b>)'
             },
             plotOptions: {
                 pie: {
@@ -91,6 +91,6 @@ export class PieChartComponent implements OnInit {
         this.refresh.emit();
         setTimeout(() => {
             this.isLoading = false;
-        }, 1000);
+        }, 300);
     }
 }

@@ -1,5 +1,3 @@
-using EFNgApp.DataAccess;
-using EFNgApp.Interfaces;
 using EFNgApp.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,7 +22,6 @@ namespace EFNgApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IEmployee, EmployeeDataAccessLayer>();
             services.AddDbContext<AA_DHContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
 
             services.AddMvc(options => options.EnableEndpointRouting = false);
