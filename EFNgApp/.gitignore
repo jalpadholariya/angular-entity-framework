@@ -232,4 +232,5 @@ _Pvt_Extensions
 
 ./ClientApp/node_modules/
 /ClientApp/node_modules/
-/.vs
+/ClientApp/dist/
+/.vs/*
